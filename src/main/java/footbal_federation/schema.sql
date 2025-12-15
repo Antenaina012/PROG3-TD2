@@ -1,5 +1,5 @@
 CREATE TYPE player_position AS ENUM ('GK', 'DEF', 'MIDF', 'STR');
-CREATE TYPE Continent AS ENUM ('Africa', 'Eropa', 'Asia', 'America');x``
+CREATE TYPE location AS ENUM ('Africa', 'Eropa', 'Asia', 'America');x``
 
 CREATE TABLE Player (
     id INT PRIMARY KEY,
@@ -9,3 +9,8 @@ CREATE TABLE Player (
     id_team INT,
     FOREIGN KEY (id_team) REFERENCES Team(id)
 );
+CREATE TABLE Team(
+    id INT PRIMARY KEY,
+    name VARCHAR(250)NOT NULL,
+    continent location NOT NULL,
+)
