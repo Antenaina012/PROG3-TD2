@@ -2,7 +2,6 @@ public class Order {
     private String reference;
     private OrderType type;
     private OrderStatus status;
-    // ... autres attributs existants (liste de plats, etc.)
 
     public void validateNotDelivered() {
         if (this.status == OrderStatus.DELIVERED) {
@@ -10,7 +9,6 @@ public class Order {
         }
     }
 
-    // Getters et Setters
     public OrderStatus getStatus() { return status; }
     public void setStatus(OrderStatus status) { this.status = status; }
     public OrderType getType() { return type; }

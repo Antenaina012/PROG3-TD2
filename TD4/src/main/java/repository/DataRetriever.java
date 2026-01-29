@@ -30,3 +30,20 @@ public class DataRetriever {
         return toSave;
     }
 }
+        public Order saveOrder(Order orderToSave) {
+
+            orderToSave.validateNotDelivered();
+
+            String sql = "INSERT INTO \"order\" (reference, type, status) VALUES (?, ?::order_type, ?::order_status) " +
+                    "ON CONFLICT (reference) DO UPDATE SET type = EXCLUDED.type, status = EXCLUDED.status";
+
+            try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+                pstmt.setString(1, orderToSave.getReference());
+                pstmt.setString(2, orderToSave.getType().name());
+                pstmt.setString(3, orderToSave.getStatus().name());
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return orderToSave;
+        }
