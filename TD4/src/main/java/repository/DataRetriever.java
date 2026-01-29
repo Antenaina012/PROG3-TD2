@@ -47,3 +47,20 @@ public class DataRetriever {
             }
             return orderToSave;
         }
+        public Order findOrderByReference(String reference) {
+            String sql = "SELECT * FROM \"order\" WHERE reference = ?";
+            try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+                pstmt.setString(1, reference);
+                ResultSet rs = pstmt.executeQuery();
+                if (rs.next()) {
+                    Order order = new Order();
+                    order.setReference(rs.getString("reference"));
+                    order.setType(OrderType.valueOf(rs.getString("type")));
+                    order.setStatus(OrderStatus.valueOf(rs.getString("status")));
+                    return order;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
