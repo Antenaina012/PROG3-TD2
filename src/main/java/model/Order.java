@@ -1,0 +1,20 @@
+package model;
+
+public class Order {
+    private String reference;
+    private OrderType type;
+    private OrderStatus status;
+
+    public void validateNotDelivered() {
+        if (this.status == OrderStatus.DELIVERED) {
+            throw new IllegalStateException("Une commande livrée ne peut plus être modifiée.");
+        }
+    }
+
+    public String getReference() { return reference; }
+    public void setReference(String reference) { this.reference = reference; }
+    public OrderType getType() { return type; }
+    public void setType(OrderType type) { this.type = type; }
+    public OrderStatus getStatus() { return status; }
+    public void setStatus(OrderStatus status) { this.status = status; }
+}
