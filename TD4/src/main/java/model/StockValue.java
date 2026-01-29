@@ -1,3 +1,5 @@
+package model;
+
 public class StockValue {
     private double quantity;
     private Unit unit;

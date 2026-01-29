@@ -1,4 +1,5 @@
+package model;
+
 public enum OrderType {
-    EAT_IN,
-    TAKE_AWAY
+    EAT_IN, TAKE_AWAY
 }

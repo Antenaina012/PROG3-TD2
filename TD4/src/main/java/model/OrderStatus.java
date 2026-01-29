@@ -1,5 +1,5 @@
+package model;
+
 public enum OrderStatus {
-    CREATED,
-    READY,
-    DELIVERED
+    CREATED, READY, DELIVERED
 }

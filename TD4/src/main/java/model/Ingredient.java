@@ -1,3 +1,5 @@
+package model;
+
 import java.time.Instant;
 import java.util.List;
 
@@ -5,12 +7,14 @@ public class Ingredient {
     private int id;
     private String name;
     private Double price;
+    private CategoryEnum category;
     private List<StockMovement> stockMovementList;
 
-    public Ingredient(int id, String name, Double price, List<StockMovement> stockMovementList) {
+    public Ingredient(int id, String name, Double price, CategoryEnum category, List<StockMovement> stockMovementList) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.category = category;
         this.stockMovementList = stockMovementList;
     }
 
@@ -29,5 +33,6 @@ public class Ingredient {
     }
 
     public int getId() { return id; }
+    public String getName() { return name; }
     public List<StockMovement> getStockMovementList() { return stockMovementList; }
 }
